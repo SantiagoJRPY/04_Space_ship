@@ -2,7 +2,7 @@ import pygame
 import random
 
 from pygame.sprite import Sprite
-from game.utils.constants import ENEMY_1, SCREEN_HEIGHT, SCREEN_WIDTH, ENEMY_2, ENEMY_3
+from game.utils.constants import ENEMY_1, SCREEN_HEIGHT, SCREEN_WIDTH, ENEMY_2, ENEMY_3, ENEMY_4
 
 class Enemy(Sprite):
     Y_POS = 20
@@ -10,7 +10,7 @@ class Enemy(Sprite):
     SPEED_X = 5
     SPEED_Y = [1,2,3]
     MOV_X = {0:'left', 1:'right'}
-    enemies = [ENEMY_1, ENEMY_2, ENEMY_3]
+    enemies = [ENEMY_1, ENEMY_2, ENEMY_3, ENEMY_4]
     MOV_LEFT = 0
     MOV_RIGHT = 0
 
