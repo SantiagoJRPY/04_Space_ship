@@ -19,9 +19,12 @@ class EnemyManager:
             move_x_for = [50,120]
             enemy = Enemy(enemy_type, x_speed, y_speed, move_x_for)
 
-        if len(self.enemies) < 1: #Aqui podemos agregar o disminuir las naves
+        if len(self.enemies) < 4: #Aqui podemos agregar o disminuir las naves
             self.enemies.append(enemy)
         
     def draw(self, screen):
         for enemy in self.enemies:
             enemy.draw(screen)
+
+    def reset(self):
+        self.enemies = []

@@ -44,12 +44,11 @@ class Spaceship(Sprite):
         if user_input [pygame.K_DOWN]:
             self.move_down()
         if user_input[pygame.K_SPACE]:
-            self.shoot(game.bullet_manager)
+            self.shoot(game)
 
-    def shoot(self, bullet_manager):    
+    def shoot(self, game):    
             bullet = Bullet(self)
-            bullet_manager.add_bullet(bullet)
-            print(len(bullet_manager.bullets))
+            game.bullet_manager.add_bullet(bullet)
         
             
 
