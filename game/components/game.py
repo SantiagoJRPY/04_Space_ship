@@ -15,7 +15,7 @@ class Game:
 
         self.playing = False
         self.game_speed = 10
-        self.max_score = []
+        self.max_score = [0]
 
         self.x_pos_bg = 0
         self.y_pos_bg = 0
@@ -88,9 +88,16 @@ class Game:
         if self.death_count == 0:
             self.menu.draw(self.screen)
         else:
-            self.menu.update_message('Game Over')
+            max_score = max(self.max_score)
+            message = f"""Game Over\
+            Your Score: {self.score}\
+            Your Deads: {self.death_count}\
+            Your Max Score: {max_score}\
+            """
+            pygame.display.set_caption("Ejemplo de mensaje en pantalla")
+            self.menu.update_message(message)
             self.menu.draw(self.screen)
-            
+
             if self.score in self.max_score:
                 pass
             else:

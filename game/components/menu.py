@@ -30,7 +30,8 @@ class Menu:
     def update_message(self, message):
         self.text = self.font.render(message, True, (0,0,0))
         self.text_rect = self.text.get_rect()
-        self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT)
+        self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT+20)
 
     def reset_screen_color(self, screen):
         screen.fill((255,255,255))
+
