@@ -92,7 +92,7 @@ class Game:
                 self.menu.draw(self.screen, f"{self.player.power_up_type.capitalize()} is enable for, {time_to_show} in seconds", 500, 50, (255,255,255))
             else:
                 self.player.has_power_up = False
-                self.player.power_time_up = DEFAULT_TYPE
+                self.player.power_up_type  = DEFAULT_TYPE
                 self.player.set_image()
 
     def draw_background(self):
