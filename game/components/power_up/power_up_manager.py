@@ -13,7 +13,7 @@ class PowerUpManager:
         self.appear_power_up = [self.shield, self.burst]
         self.power_ups = []
         self.when_appears = random.randint(5000, 15000)
-        self.duration = random.randint(3,5)
+        self.duration = random.randint(5,10)
 
     def generate_power_up(self):
         power_up = random.choice(self.appear_power_up)
