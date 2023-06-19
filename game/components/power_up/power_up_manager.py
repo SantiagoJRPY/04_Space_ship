@@ -10,8 +10,7 @@ class PowerUpManager:
         self.bullet_manager = BulletManager()
         self.shield = Shield()
         self.burst = Burst()
-        self.freezer = Freezer()
-        self.appear_power_up = [self.shield, self.burst, self.freezer]
+        self.appear_power_up = [self.shield, self.burst]
         self.power_ups = []
         self.when_appears = random.randint(5000, 15000)
         self.duration = random.randint(3,5)
@@ -51,7 +50,7 @@ class PowerUpManager:
                 
             
     def draw(self,screen):
-        for power_up in self.appear_power_up:
+        for power_up in self.power_ups:
             power_up.draw(screen)
 
     def reset(self):
