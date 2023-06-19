@@ -6,6 +6,7 @@ from game.components.bullets.bullet_manager import BulletManager
 from game.components.menu import Menu
 from game.components.counter import Counter
 from game.components.power_up.power_up_manager import PowerUpManager
+from game.utils.constants import *
 
 class Game:
     def __init__(self):

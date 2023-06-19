@@ -1,10 +1,13 @@
 import pygame
-from game.utils.constants import SHIELD_TYPE,BACKGROUND_SOUND_END
+from game.utils.constants import SHIELD_TYPE,BACKGROUND_SOUND_END, BURST
+from game.components.spaceship import Spaceship
 
 class BulletManager:
     def __init__(self):
+        self.total_bullet = 1
         self.bullets = []
         self.enemy_bullets = []
+        self.spaceship = Spaceship()
 
     def update(self, game):
         for bullet in self.bullets:
@@ -39,12 +42,17 @@ class BulletManager:
             bullet.draw(screen)
             
 
+    def mod_burst(self, bullet):
+
+        pass
+
     def add_bullet(self, bullet):
         if bullet.owner == "enemy":
                 self.enemy_bullets.append(bullet)
                 
-        elif bullet.owner == "player":
+        elif bullet.owner == "player" and len(self.bullets) < self.total_bullet:
             self.bullets.append(bullet)
+            print(self.total_bullet)
     
     def reset(self):
         self.bullets = []

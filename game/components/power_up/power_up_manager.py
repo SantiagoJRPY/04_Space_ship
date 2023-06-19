@@ -6,10 +6,10 @@ from game.utils.constants import *
 
 class PowerUpManager:
     def __init__(self):
-        shield = Shield()
-        burst = Burst()
-        freezer = Freezer()
-        self.appear_power_up = [shield, burst, freezer]
+        self.shield = Shield()
+        self.burst = Burst()
+        self.freezer = Freezer()
+        self.appear_power_up = [self.shield, self.burst, self.freezer]
         self.power_ups = []
         self.when_appears = random.randint(5000, 15000)
         self.duration = random.randint(3,5)
@@ -27,7 +27,8 @@ class PowerUpManager:
 
         for power_up in self.power_ups:
             power_up.update(game.game_speed, self.power_ups)
-            if game.player.rect.colliderect(power_up):
+            if game.player.rect.colliderect(power_up) and power_up == self.shield:
+                print("Colisiono con Shield")
                 power_up.start_time = pygame.time.get_ticks()
                 game.player.has_power_up  = True
                 game.player.power_up_type = SHIELD_TYPE
@@ -35,9 +36,20 @@ class PowerUpManager:
                 game.player.set_image((65,75), SPACESHIP_SHIELD)
                 self.power_ups.remove(power_up)
             
-
+            elif game.player.rect.colliderect(power_up) and power_up == self.burst:
+                print("Colisiono con Burst")
+                game.bullet_manager.total_bullets = 4
+                print(game.bullet_manager.total_bullets)
+                power_up.start_time = pygame.time.get_ticks()
+                game.player.has_power_up  = True
+                game.player.power_up_type = BURST
+                game.player.power_time_up = power_up.start_time + (self.duration * 1000)
+                game.player.set_image((65,75), SPACESHIP_BURST)
+                self.power_ups.remove(power_up)
+                
+            
     def draw(self,screen):
-        for power_up in self.power_ups:
+        for power_up in self.appear_power_up:
             power_up.draw(screen)
 
     def reset(self):
