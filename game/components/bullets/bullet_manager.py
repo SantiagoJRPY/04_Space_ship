@@ -1,5 +1,5 @@
 import pygame
-from game.utils.constants import SHIELD_TYPE
+from game.utils.constants import SHIELD_TYPE,BACKGROUND_SOUND_END
 
 class BulletManager:
     def __init__(self):
@@ -15,6 +15,7 @@ class BulletManager:
                     game.enemy_manager.enemies.remove(enemy)
                     self.bullets.remove(bullet)
                     game.score.update()
+
         
         for bullet in self.enemy_bullets:
             bullet.update(self.enemy_bullets)
@@ -25,6 +26,8 @@ class BulletManager:
                     game.playing = False
                     pygame.time.delay(1000)
                     game.death_count.update()
+                    BACKGROUND_SOUND_END.play()
+
                 break
             
 
@@ -36,10 +39,11 @@ class BulletManager:
             bullet.draw(screen)
             
 
-    def add_bullet(self, bullet):        
-        if bullet.owner == 'enemy' and len(self.enemy_bullets) < 1:
-            self.enemy_bullets.append(bullet)
-        elif bullet.owner == 'player' and len(self.bullets) < 3:
+    def add_bullet(self, bullet):
+        if bullet.owner == "enemy":
+                self.enemy_bullets.append(bullet)
+                
+        elif bullet.owner == "player":
             self.bullets.append(bullet)
     
     def reset(self):

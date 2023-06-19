@@ -107,19 +107,23 @@ class Game:
         self.y_pos_bg = self.y_pos_bg + self.game_speed
         
     def show_menu(self) :
-        self.menu.reset_screen_color(self.screen)
+        self.menu.reset_screen_color(BACKGROUND_START1, self.screen)
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
+        BACKGROUND_SOUND_START.play() #Sound to Start
 
         if self.death_count.count == 0:
             self.menu.draw(self.screen, "Press any key to start...")
+            
+
         else:
             self.update_highest_score()
             self.menu.draw(self.screen, "Game Over, Press any key restart")
             self.menu.draw(self.screen, f"Your Score: {self.score.count}", half_screen_width, 350)
             self.menu.draw(self.screen, f"Your Hihest Score: {self.highest_score.count}", half_screen_width, 400)
             self.menu.draw(self.screen, f"Total Death: {self.death_count.count}", half_screen_width, 450)
-
+            BACKGROUND_SOUND_START.stop() 
+            BACKGROUND_SOUND_END.play()
             
         icon = pygame.transform.scale(ICON, (80,120))
         self.screen.blit(icon, (half_screen_width -50, half_screen_height - 150))

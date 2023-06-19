@@ -1,5 +1,5 @@
 import pygame
-from game.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH
+from game.utils.constants import *
 
 class Menu:
     HALF_SCREEN_HEIGHT = SCREEN_HEIGHT // 2
@@ -7,7 +7,7 @@ class Menu:
     
     def __init__(self, screen):
         screen.fill((255,255,255))
-        self.font = pygame.font.Font(FONT_STYLE,30)
+        self.font = pygame.font.Font(FONT_STYLE, 40)
 
 
     def handle_events_on_menu(self, game):
@@ -16,6 +16,8 @@ class Menu:
                 game.running = False
                 game.playing = False
             if event.type == pygame.KEYDOWN:
+                BACKGROUND_SOUND_END.stop()
+                BACKGROUND_SOUND_START.stop()
                 game.run()
 
     def update(self,game):
@@ -28,6 +30,9 @@ class Menu:
         text_rect.center = (x,y)
         screen.blit(text, text_rect)
 
-    def reset_screen_color(self, screen):
-        screen.fill((255,255,255))
+    
+    
 
+    def reset_screen_color(self, image, screen):
+        background = pygame.transform.scale(image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        screen.blit(background, (0,0))
