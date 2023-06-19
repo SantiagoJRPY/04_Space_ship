@@ -7,6 +7,7 @@ class Spaceship(Sprite):
     Y_POS = 500
 
     def __init__(self):
+        self.total_bullet = 1
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (40,60))
         self.rect = self.image.get_rect()
@@ -52,7 +53,7 @@ class Spaceship(Sprite):
 
     def shoot(self, game):    
             bullet = Bullet(self)
-            game.bullet_manager.add_bullet(bullet)
+            game.bullet_manager.add_bullet(bullet, game)
         
             
 

@@ -4,7 +4,6 @@ from game.components.spaceship import Spaceship
 
 class BulletManager:
     def __init__(self):
-        self.total_bullet = 1
         self.bullets = []
         self.enemy_bullets = []
         self.spaceship = Spaceship()
@@ -42,17 +41,15 @@ class BulletManager:
             bullet.draw(screen)
             
 
-    def mod_burst(self, bullet):
 
-        pass
 
-    def add_bullet(self, bullet):
+    def add_bullet(self, bullet, game):
         if bullet.owner == "enemy":
                 self.enemy_bullets.append(bullet)
                 
-        elif bullet.owner == "player" and len(self.bullets) < self.total_bullet:
+        elif bullet.owner == "player" and len(self.bullets) < game.player.total_bullet:
             self.bullets.append(bullet)
-            print(self.total_bullet)
+
     
     def reset(self):
         self.bullets = []

@@ -3,9 +3,11 @@ import random
 
 from game.components.power_up.shield import *
 from game.utils.constants import *
+from game.components.bullets.bullet_manager import BulletManager
 
 class PowerUpManager:
     def __init__(self):
+        self.bullet_manager = BulletManager()
         self.shield = Shield()
         self.burst = Burst()
         self.freezer = Freezer()
@@ -38,8 +40,8 @@ class PowerUpManager:
             
             elif game.player.rect.colliderect(power_up) and power_up == self.burst:
                 print("Colisiono con Burst")
-                game.bullet_manager.total_bullets = 4
-                print(game.bullet_manager.total_bullets)
+                game.player.total_bullet = 4
+                print(game.player.total_bullet)
                 power_up.start_time = pygame.time.get_ticks()
                 game.player.has_power_up  = True
                 game.player.power_up_type = BURST
