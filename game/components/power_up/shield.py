@@ -5,9 +5,6 @@ class Shield(PowerUp):
     def __init__(self):
         super().__init__(SHIELD,SHIELD_TYPE)
 
-class Freezer(PowerUp):
-    def __init__(self):
-        super().__init__(SLOW_IMG,FREZEER)
 
 class Burst(PowerUp):
     def __init__(self):

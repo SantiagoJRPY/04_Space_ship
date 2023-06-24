@@ -39,7 +39,7 @@ class PowerUpManager:
             
             elif game.player.rect.colliderect(power_up) and power_up == self.burst:
                 print("Colisiono con Burst")
-                game.player.total_bullet = 4
+                game.player.total_bullet = 10
                 print(game.player.total_bullet)
                 power_up.start_time = pygame.time.get_ticks()
                 game.player.has_power_up  = True
